@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import Menu from '../main/Menu';
 
 export default class OrderHistory extends Component {
@@ -11,8 +11,14 @@ export default class OrderHistory extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: '#70B688' }}>
+            <View style={{ flex: 1 }}>
                 <Menu {...this.props} />
+                <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                    <Text style={{fontSize: 30}}>
+                        Order History Component
+                    </Text>
+                </View>
+                
             </View>
         );
     }

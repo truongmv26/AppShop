@@ -23,7 +23,7 @@ export default class Menu extends Component {
                         navigate('DrawerOpen');
                     }}
                 >
-                    <Image style={{width: 32, height: 32}} source={require('../images/menu.png')} />
+                    <Image style={{width: 32, height: 32}} source={require('./shop/images/menu.png')} />
                 </TouchableHighlight>
             </View>
         );

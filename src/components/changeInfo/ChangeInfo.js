@@ -11,8 +11,11 @@ export default class ChangeInfo extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: '#1E7EC6' }}>
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Menu {...this.props} />
+                <Text style={{fontSize: 30}}>
+                    Change Info Component
+                </Text>
             </View>
         );
     }
