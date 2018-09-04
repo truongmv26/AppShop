@@ -11,11 +11,13 @@ export default class Authentication extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ flex: 1 }}>
                 <Menu {...this.props} />
-                <Text style={{fontSize: 30}}>
-                    Authentication Component
-                </Text>
+                <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+                    <Text style={{fontSize: 30}}>
+                        Authentication Component
+                    </Text>
+                </View>
             </View>
         );
     }

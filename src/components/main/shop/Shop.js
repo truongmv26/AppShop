@@ -20,32 +20,32 @@ export default class Shop extends Component {
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'home'}
                         title="Home"
-                        renderIcon={() => <Image source={require('./images/home.png')} style={{width: 25, height: 25}} />}
-                        renderSelectedIcon={() => <Image source={require('./images/home_selected.png')} style={{width: 25, height: 25}} />}
+                        renderIcon={() => <Image source={require('../../../media/appIcon/home0.png')} style={{width: 25, height: 25}} />}
+                        renderSelectedIcon={() => <Image source={require('../../../media/appIcon/home.png')} style={{width: 25, height: 25}} />}
                         onPress={() => this.setState({ selectedTab: 'home' })}>
                         <Home />
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'cart'}
                         title="Cart"
-                        renderIcon={() => <Image source={require('./images/cart.png')} style={{width: 25, height: 25}} />}
-                        renderSelectedIcon={() => <Image source={require('./images/cart_selected.png')} style={{width: 25, height: 25}} />}
+                        renderIcon={() => <Image source={require('../../../media/appIcon/cart0.png')} style={{width: 25, height: 25}} />}
+                        renderSelectedIcon={() => <Image source={require('../../../media/appIcon/cart.png')} style={{width: 25, height: 25}} />}
                         onPress={() => this.setState({ selectedTab: 'cart' })}>
                         <Cart />
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'search'}
                         title="Search"
-                        renderIcon={() => <Image source={require('./images/search.png')} style={{width: 25, height: 25}} />}
-                        renderSelectedIcon={() => <Image source={require('./images/search_selected.png')} style={{width: 25, height: 25}} />}
+                        renderIcon={() => <Image source={require('../../../media/appIcon/search0.png')} style={{width: 25, height: 25}} />}
+                        renderSelectedIcon={() => <Image source={require('../../../media/appIcon/search.png')} style={{width: 25, height: 25}} />}
                         onPress={() => this.setState({ selectedTab: 'search' })}>
                         <Search />
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'contact'}
                         title="Contact"
-                        renderIcon={() => <Image source={require('./images/contact.png')} style={{width: 25, height: 25}} />}
-                        renderSelectedIcon={() => <Image source={require('./images/contact_selected.png')} style={{width: 25, height: 25}} />}
+                        renderIcon={() => <Image source={require('../../../media/appIcon/contact0.png')} style={{width: 25, height: 25}} />}
+                        renderSelectedIcon={() => <Image source={require('../../../media/appIcon/contact.png')} style={{width: 25, height: 25}} />}
                         onPress={() => this.setState({ selectedTab: 'contact' })}>
                         <Contact />
                     </TabNavigator.Item>

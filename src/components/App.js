@@ -34,9 +34,10 @@ let drawNavigatorConfig = {
     drawerOpenRoute: 'DrawerOpen',
     drawerCloseRoute: 'DrawerClose',
     drawerToggleRoute: 'DrawerToggle',
+    drawerBackgroundColor: '#49B79C',
     contentOptions: {
         activeTintColor: 'red'
-    }
+    },
 };
 const App = DrawerNavigator(routeConfigs, drawNavigatorConfig);
 export default App;

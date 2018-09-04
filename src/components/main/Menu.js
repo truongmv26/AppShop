@@ -1,31 +1,17 @@
 import React, { Component } from 'react';
 import { View, Image, TouchableHighlight } from 'react-native';
+import Header from './shop/Header';
 
 export default class Menu extends Component {
+
+    _onOpen = () => {
+        const { navigate } = this.props.navigation;
+        navigate('DrawerOpen');
+    }
     // state = {  }
     render() {
         return (
-            <View
-                style={{
-                    flexDirection: 'row',
-                    height: 90,
-                    justifyContent: 'flex-start',
-                    alignItems: 'center'
-                }}
-            >
-                <TouchableHighlight
-                    style={{
-                        marginLeft: 10,
-                        marginTop: 20
-                    }}
-                    onPress={() => {
-                        const { navigate } = this.props.navigation;
-                        navigate('DrawerOpen');
-                    }}
-                >
-                    <Image style={{width: 32, height: 32}} source={require('./shop/images/menu.png')} />
-                </TouchableHighlight>
-            </View>
+            <Header onOpen={this._onOpen.bind(this)} />
         );
     }
 }
