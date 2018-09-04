@@ -1,18 +1,20 @@
 /** @format */
 
-import { StatusBar } from 'react-native';
+import { StatusBar, Dimensions } from 'react-native';
 import Authentication from './authentication/Authentication';
 import ChangeInfo from './changeInfo/ChangeInfo'; 
 import Main from './main/Main'; 
 import OrderHistory from './orderHistory/OrderHistory'; 
-import { TabNavigator } from 'react-navigation';
-// import { MainScreen, ChangeInfoScreen, AuthenticationScreen, OrderHistoryScreen } from './src/screenNames';
+import { DrawerNavigator } from 'react-navigation';
+import { MainScreen, ChangeInfoScreen, AuthenticationScreen, OrderHistoryScreen } from '../screenNames';
 
 StatusBar.setHidden(true);
-
+var width = Dimensions.get('window').width
+var height = Dimensions.get('window').height
 
 const routeConfigs = {
     MainScreen: {
+        path: '/',
         screen: Main,
     },
     ChangeInfoScreen: {
@@ -25,20 +27,16 @@ const routeConfigs = {
         screen: OrderHistory,
     },
 };
-const tabNavigatorConfig = {    
-    tabBarPosition: 'bottom',
-    animationEnabled: true,
-    swipeEnabled: true,
-    tabBarOptions: {
-        activeTintColor: 'blue',
-        labelStyle: {
-            fontSize: 13,
-        },
-        style: {
-            backgroundColor: 'lightgray',
-            padding: -10
-        },   
-    },    
+let drawNavigatorConfig = {
+    initialRouteName: MainScreen,
+    drawerWidth: width/2,
+    drawerPosition: 'left',
+    drawerOpenRoute: 'DrawerOpen',
+    drawerCloseRoute: 'DrawerClose',
+    drawerToggleRoute: 'DrawerToggle',
+    contentOptions: {
+        activeTintColor: 'red'
+    }
 };
-const App = TabNavigator(routeConfigs, tabNavigatorConfig);
+const App = DrawerNavigator(routeConfigs, drawNavigatorConfig);
 export default App;

@@ -1,6 +1,6 @@
-const MainScreen = 'Main';
-const ChangeInfoScreen = 'ChangeInfo';
-const AuthenticationScreen = 'Authentication';
-const OrderHistoryScreen = 'OrderHistory';
+const MainScreen = 'MainScreen';
+const ChangeInfoScreen = 'ChangeInfoScreen';
+const AuthenticationScreen = 'AuthenticationScreen';
+const OrderHistoryScreen = 'OrderHistoryScreen';
 
 export { MainScreen, ChangeInfoScreen, AuthenticationScreen, OrderHistoryScreen };
