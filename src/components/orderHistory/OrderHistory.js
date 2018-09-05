@@ -5,7 +5,7 @@ import Menu from '../main/Menu';
 export default class OrderHistory extends Component {
     
     static navigationOptions = () => {        
-        const drawerLabel = 'OrderHistory';
+        const drawerLabel = 'Order History';
         return { drawerLabel };
     }
 

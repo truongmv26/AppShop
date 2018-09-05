@@ -10,7 +10,7 @@ import { MainScreen, ChangeInfoScreen, AuthenticationScreen, OrderHistoryScreen 
 
 StatusBar.setHidden(true);
 var width = Dimensions.get('window').width
-var height = Dimensions.get('window').height
+// var height = Dimensions.get('window').height
 
 const routeConfigs = {
     MainScreen: {
@@ -36,7 +36,12 @@ let drawNavigatorConfig = {
     drawerToggleRoute: 'DrawerToggle',
     drawerBackgroundColor: '#49B79C',
     contentOptions: {
-        activeTintColor: 'red'
+        labelStyle: {
+            fontFamily: 'Avenir',
+            color: '#49B79C',
+            fontSize: 18,
+            backgroundColor: 'white'
+        }
     },
 };
 const App = DrawerNavigator(routeConfigs, drawNavigatorConfig);

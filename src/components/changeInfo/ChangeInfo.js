@@ -5,7 +5,7 @@ import Menu from '../main/Menu';
 export default class ChangeInfo extends Component {
     
     static navigationOptions = () => {        
-        const drawerLabel = 'ChangeInfo';
+        const drawerLabel = 'Change Info';
         return { drawerLabel };
     }
 
