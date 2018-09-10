@@ -10,12 +10,8 @@ export default class Menu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoggedIn: true
+            isLoggedIn: false
         }
-    }
-
-    _onOpen = () => {
-        this.props.open();
     }
 
     goAuthentication() {
@@ -42,7 +38,7 @@ export default class Menu extends Component {
 
         const logoutJSX = (
             <View>
-                <TouchableOpacity style={btnSignInStyle}>
+                <TouchableOpacity style={btnSignInStyle} onPress={this.goAuthentication.bind(this)}>
                     <Text style={btnText}>Sign In</Text>
                 </TouchableOpacity>
             </View>
@@ -52,10 +48,10 @@ export default class Menu extends Component {
             <View style={loginContainer}>
                 <Text style={username}>Mai Van Truong</Text>
                 <View>
-                    <TouchableOpacity style={btnStyle}>
+                    <TouchableOpacity style={btnStyle} onPress={this.goChangeInfo.bind(this)}>
                         <Text style={btnText}>Change Info</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={btnStyle}>
+                    <TouchableOpacity style={btnStyle} onPress={this.goOrderHistory.bind(this)}>
                         <Text style={btnText}>Order History</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={btnStyle}>

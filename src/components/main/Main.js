@@ -16,10 +16,6 @@ export default class Main extends Component {
         this.drawer.open();
     };
 
-    componentDidMount() {
-        this.openControlPanel()
-    }
-
     render() {
         const { navigation } = this.props;
         return (

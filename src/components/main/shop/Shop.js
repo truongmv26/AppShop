@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, SafeAreaView } from 'react-native';
 
 import TabNavigator from 'react-native-tab-navigator';
 import Home from './home/Home';

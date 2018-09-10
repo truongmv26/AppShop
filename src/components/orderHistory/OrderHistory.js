@@ -12,7 +12,6 @@ export default class OrderHistory extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <Menu {...this.props} />
                 <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
                     <Text style={{fontSize: 30}}>
                         Order History Component
