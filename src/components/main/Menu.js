@@ -1,17 +1,128 @@
 import React, { Component } from 'react';
-import { View, Image, TouchableHighlight } from 'react-native';
-import Header from './shop/Header';
-
+import {
+    View, Text, Image,
+    Dimensions, StyleSheet,
+    TouchableOpacity
+} from 'react-native';
+const { width } = Dimensions.get('window');
 export default class Menu extends Component {
 
-    _onOpen = () => {
-        const { navigate } = this.props.navigation;
-        navigate('DrawerOpen');
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoggedIn: true
+        }
     }
-    // state = {  }
+
+    _onOpen = () => {
+        this.props.open();
+    }
+
+    goAuthentication() {
+        const { navigation } = this.props;
+        navigation.navigate('Authentication')
+    }
+
+    goOrderHistory() {
+        const { navigation } = this.props;
+        navigation.navigate('OrderHistory')
+    }
+
+    goChangeInfo() {
+        const { navigation } = this.props;
+        navigation.navigate('ChangeInfo')
+    }
+
     render() {
+        const { 
+            container, profile, btnStyle, 
+            btnText, btnSignInStyle, 
+            loginContainer, username 
+        } = styles;
+
+        const logoutJSX = (
+            <View>
+                <TouchableOpacity style={btnSignInStyle}>
+                    <Text style={btnText}>Sign In</Text>
+                </TouchableOpacity>
+            </View>
+        );
+
+        const loginJSX = (
+            <View style={loginContainer}>
+                <Text style={username}>Mai Van Truong</Text>
+                <View>
+                    <TouchableOpacity style={btnStyle}>
+                        <Text style={btnText}>Change Info</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={btnStyle}>
+                        <Text style={btnText}>Order History</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={btnStyle}>
+                        <Text style={btnText}>Sign Out</Text>
+                    </TouchableOpacity>
+                </View>
+                <View />
+            </View>
+        );
+
+        const mainJSX = this.state.isLoggedIn ? loginJSX : logoutJSX;
+
         return (
-            <Header onOpen={this._onOpen.bind(this)} />
+            <View style={container}>
+                <Image source={require('../../media/temp/profile.png')} style={profile} />
+                { mainJSX }
+            </View>
         );
     }
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#34B089',
+        borderRightWidth: 2,
+        borderColor: '#fff',
+        alignItems: 'center'
+    },
+    profile: {
+        height: 120,
+        width: 120,
+        borderRadius: 60,
+        marginVertical: 30
+    },
+    btnSignInStyle: {
+        backgroundColor: '#fff',
+        height: 60,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+        width: width * 0.7 - 20,
+    },
+    btnStyle: {
+        backgroundColor: '#fff',
+        height: 60,
+        justifyContent: 'center',
+        paddingLeft: 20,
+        borderRadius: 5,
+        width: width * 0.7 - 20,
+        marginBottom: 10
+    },
+    btnText: {
+        color: '#34B089',
+        fontFamily: 'Avenir',
+        fontSize: 20
+    },
+    loginContainer: {
+        flex: 1, 
+        justifyContent: 'space-between', 
+        alignItems: 'center'
+    },
+    username: {
+        color: '#fff', 
+        fontFamily: 'Avenir', 
+        fontSize: 18
+    }
+})
+

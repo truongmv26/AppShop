@@ -18,7 +18,6 @@ export default class Header extends Component {
                     style={{ padding: 5, marginLeft: 10, marginRight: 10 , marginTop: -5,backgroundColor: 'white', height: height / 20 }} 
                     placeholder="What do you want to buy?" 
                 >
-
                 </TextInput>
             </View>
         );
