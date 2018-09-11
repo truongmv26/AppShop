@@ -4,6 +4,7 @@ import { View, Text, Image, TouchableOpacity, Dimensions, TextInput } from 'reac
 var { height } = Dimensions.get('window');
 
 export default class Header extends Component {
+    
     render() {
         return (
             <View style={{ height: height / 7, backgroundColor: '#3CB99C', justifyContent: 'space-around' }}>

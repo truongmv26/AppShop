@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
 
 const { width, height } = Dimensions.get('window');
 
 export default class Category extends Component {
+
+    goProductList() {
+        const { navigation } = this.props;
+        navigation.navigate('List');
+    }
+
     render() {
         return (
             <View style={styles.wrapper}>
@@ -15,24 +21,30 @@ export default class Category extends Component {
                 </View>
                 <View style={{ flex: 4, justifyContent: 'flex-end' }}>
                     <Swiper autoplayTimeout={2} autoplay={true}>
-                        <ImageBackground
-                            source={require('../../../../media/temp/little.jpg')}
-                            style={styles.imageStyle}
-                        >
-                            <Text style={styles.textStyle}>Little Dress</Text>
-                        </ImageBackground>
-                        <ImageBackground
-                            source={require('../../../../media/temp/maxi.jpg')}
-                            style={styles.imageStyle}
-                        >
-                            <Text style={styles.textStyle}>Maxi Dress</Text>
-                        </ImageBackground>
-                        <ImageBackground
-                            source={require('../../../../media/temp/party.jpg')}
-                            style={styles.imageStyle}
-                        >
-                            <Text style={styles.textStyle}>Party Dress</Text>
-                        </ImageBackground>
+                        <TouchableOpacity onPress={this.goProductList.bind(this)}>
+                            <ImageBackground
+                                source={require('../../../../media/temp/little.jpg')}
+                                style={styles.imageStyle}
+                            >
+                                <Text style={styles.textStyle}>Little Dress</Text>
+                            </ImageBackground>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={this.goProductList.bind(this)}>
+                            <ImageBackground
+                                source={require('../../../../media/temp/maxi.jpg')}
+                                style={styles.imageStyle}
+                            >
+                                <Text style={styles.textStyle}>Maxi Dress</Text>
+                            </ImageBackground>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={this.goProductList.bind(this)}>
+                            <ImageBackground
+                                source={require('../../../../media/temp/party.jpg')}
+                                style={styles.imageStyle}
+                            >
+                                <Text style={styles.textStyle}>Party Dress</Text>
+                            </ImageBackground>
+                        </TouchableOpacity>
                     </Swiper>
                 </View>
 
@@ -44,7 +56,7 @@ export default class Category extends Component {
 const styles = StyleSheet.create({
     wrapper: {
         backgroundColor: 'white',
-        height: height * 0.35,
+        height: height * 0.33,
         margin: 10,
         marginBottom: 0,
         shadowColor: '#2E272B',
@@ -61,8 +73,8 @@ const styles = StyleSheet.create({
     },
     imageStyle: {
         width: width - 40,
-        height: (width - 40) * 400 / 800,
-        margin: 10,
+        height: (width - 40) / 2,
+        // marginBottom: 10,
         justifyContent: 'center',
         alignItems: 'center'
     }

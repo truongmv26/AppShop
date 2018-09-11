@@ -1,18 +1,38 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
-import Collection from './Collection';
-import Category from './Category';
-import TopProduct from './TopProduct';
+import { createStackNavigator } from 'react-navigation';
+import HomeView from './HomeView';
+import ProductDetail from '../detail/ProductDetail';
+import ListProduct from '../list/ListProduct';
 
 export default class Home extends Component {
     
     render() {
+        console.disableYellowBox = true;
         return (
-            <ScrollView style={{flex: 1, backgroundColor: '#E3E2E0'}}>
-                <Collection />
-                <Category />
-                <TopProduct />
-            </ScrollView>
+            <HomeNavigator />
         );
     }
 }
+
+const HomeNavigator = createStackNavigator({
+    HomeView: {
+        screen: HomeView,
+        navigationOptions: ({ navigation }) => ({
+            header: null
+        }),
+    },
+    Detail: {
+        screen: ProductDetail,
+        navigationOptions: ({ navigation }) => ({
+            header: null
+        }),
+    },
+    List: {
+        screen: ListProduct,
+        navigationOptions: ({ navigation }) => ({
+            header: null
+        }),
+    }
+}, {
+    initialRouteName: 'HomeView'
+})

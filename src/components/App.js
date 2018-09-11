@@ -10,25 +10,34 @@ import { createStackNavigator } from 'react-navigation';
 StatusBar.setHidden(true);
 
 const App = createStackNavigator({
-    Main: {screen: Main},
-    Authentication: {screen: Authentication},
-    ChangeInfo: {screen: ChangeInfo},
-    OrderHistory: {screen: OrderHistory},
-}, {
-    navigationOptions: {
-        headerTitle: 'Wearing a Dress',
-        headerStyle: {
-            backgroundColor: '#41AE8B'
-        },
-        headerTitleStyle: {
-            fontSize: 24,
-            fontFamily: 'Avenir',
-            color: '#fff'
-        },
-        headerTintColor: '#fff',
-        headerBackTitle: ' ',
-        headerRight: <Image source={require('../media/appIcon/ic_logo.png')} style={{marginRight: 5}} />
-        
+    Main: {
+        screen: Main,
+        navigationOptions: ({ navigation }) => ({
+            header: null
+        }),
+    },
+    Authentication: {
+        screen: Authentication,
+        navigationOptions: ({ navigation }) => ({
+            headerTitle: 'Wearing a Dress',
+            headerStyle: {
+                backgroundColor: '#41AE8B'
+            },
+            headerTitleStyle: {
+                fontSize: 24,
+                fontFamily: 'Avenir',
+                color: '#fff'
+            },
+            headerTintColor: '#fff',
+            headerBackTitle: ' ',
+            headerRight: (<Image source={require('../media/appIcon/ic_logo.png')} style={{ marginRight: 5 }} />),
+        })
+    },
+    ChangeInfo: {
+        screen: ChangeInfo
+    },
+    OrderHistory: {
+        screen: OrderHistory
     }
 })
 

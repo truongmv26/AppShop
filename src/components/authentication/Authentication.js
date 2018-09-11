@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions, TextInput, Image } from 'react-native';
 
 const { width } = Dimensions.get('window')
 
@@ -13,17 +13,17 @@ export default class Authentication extends Component {
     }
 
     _onSignIn = () => {
-        this.setState({isSignIn: true})
+        this.setState({ isSignIn: true })
     }
 
     _onSignUp = () => {
-        this.setState({isSignIn: false})
+        this.setState({ isSignIn: false })
     }
 
     render() {
-        const { 
-            container, controlStyle, 
-            btnSignInStyle, btnSignUpStyle, 
+        const {
+            container, controlStyle,
+            btnSignInStyle, btnSignUpStyle,
             activeStyle, inactiveStyle,
             inputStyle, bigButton, textBigButton
         } = styles;
@@ -60,7 +60,7 @@ export default class Authentication extends Component {
         return (
             <View style={container}>
                 <View />
-                { btnJSX }
+                {btnJSX}
                 <View style={controlStyle}>
                     <TouchableOpacity style={btnSignInStyle} onPress={this._onSignIn}>
                         <Text style={styleBtnSignIn}>
@@ -80,7 +80,7 @@ export default class Authentication extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1, 
+        flex: 1,
         backgroundColor: '#41AE8B',
         justifyContent: 'space-between',
         paddingHorizontal: 30,
@@ -129,9 +129,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontFamily: 'Avenir'
     },
-    bigButton:{
+    bigButton: {
         height: 50,
-        justifyContent:'center',
+        justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 1,
         borderColor: '#fff',

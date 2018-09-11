@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-// import { View, Text, Image, TouchableHighlight } from 'react-native';
 import Menu from './Menu';
 import Shop from './shop/Shop';
 import Drawer from 'react-native-drawer';
 
 export default class Main extends Component {
-    static navigationOptions = {
-        header: null,
-    };
 
     closeControlPanel = () => {
         this.drawer.close();
@@ -25,7 +21,7 @@ export default class Main extends Component {
                 openDrawerOffset={0.3}
                 tapToClose={true}
             >
-                <Shop open={this.openControlPanel.bind(this)} />
+                <Shop open={this.openControlPanel.bind(this)} navigation={navigation} />
             </Drawer>
         );
     }
