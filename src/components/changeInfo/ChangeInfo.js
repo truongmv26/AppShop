@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
-import Menu from '../main/Menu';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 
 export default class ChangeInfo extends Component {
     
@@ -10,14 +9,51 @@ export default class ChangeInfo extends Component {
     }
 
     render() {
+        const { container, textInputStyle, btnStyle, textBtnStyle } = styles;
         return (
-            <View style={{ flex: 1 }}>
-                <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
-                    <Text style={{fontSize: 30}}>
-                        Change Info Component
-                    </Text>
-                </View>
+            <View style={container}>
+                <TextInput style={textInputStyle} />
+                <TextInput style={textInputStyle} />
+                <TextInput style={textInputStyle} />
+                <TouchableOpacity style={btnStyle}>
+                    <Text style={textBtnStyle}>CHANGE YOUR INFORMATION</Text>
+                </TouchableOpacity>
             </View>
         );
     }
 }
+const { width, height } = Dimensions.get('window');
+const styles = StyleSheet.create({
+    container: {
+        flex: 1, 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        padding: 20
+    },
+    textInputStyle: {
+        borderColor: '#44BB9F',
+        borderWidth: 2,
+        width: width - 40,
+        height: height / 15,
+        backgroundColor: '#fff',
+        marginBottom: 20,
+        paddingLeft: 20,
+        fontSize: 16,
+        borderRadius: 20,
+        fontFamily: 'Avenir',
+    }, 
+    btnStyle: {
+        backgroundColor: '#3DB99C',
+        width: width - 40,
+        height: height / 15,
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }, 
+    textBtnStyle: {
+        fontSize: 16,
+        fontFamily: 'Avenir',
+        color: '#fff'
+    }
+
+})

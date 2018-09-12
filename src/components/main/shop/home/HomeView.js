@@ -10,7 +10,7 @@ export default class HomeView extends Component {
         const { navigation } = this.props;
         return (
             <ScrollView style={{flex: 1, backgroundColor: '#E3E2E0'}}>
-                <Collection />
+                <Collection navigation={navigation} />
                 <Category navigation={navigation} />
                 <TopProduct navigation={navigation} />
             </ScrollView>

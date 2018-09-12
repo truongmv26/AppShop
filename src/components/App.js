@@ -21,7 +21,7 @@ const App = createStackNavigator({
         navigationOptions: ({ navigation }) => ({
             headerTitle: 'Wearing a Dress',
             headerStyle: {
-                backgroundColor: '#41AE8B'
+                backgroundColor: '#41AE8B',
             },
             headerTitleStyle: {
                 fontSize: 24,
@@ -34,11 +34,26 @@ const App = createStackNavigator({
         })
     },
     ChangeInfo: {
-        screen: ChangeInfo
+        screen: ChangeInfo,
+        navigationOptions: ({ navigation }) => ({
+            headerTitle: 'User Infomation',
+            headerStyle: {
+                backgroundColor: '#41AE8B'
+            },
+            headerTitleStyle: {
+                fontSize: 24,
+                fontFamily: 'Avenir',
+                color: '#fff'
+            },
+            headerTintColor: '#fff',
+            headerBackTitle: ' '
+        })
     },
     OrderHistory: {
         screen: OrderHistory
     }
+}, {
+    initialRouteName: 'ChangeInfo'
 })
 
 export default App;

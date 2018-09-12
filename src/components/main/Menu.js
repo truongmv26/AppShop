@@ -10,7 +10,7 @@ export default class Menu extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoggedIn: false
+            isLoggedIn: true
         }
     }
 
@@ -80,13 +80,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#34B089',
         borderRightWidth: 2,
         borderColor: '#fff',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     profile: {
         height: 120,
         width: 120,
         borderRadius: 60,
-        marginVertical: 30
+        marginVertical: 30,
     },
     btnSignInStyle: {
         backgroundColor: '#fff',
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     loginContainer: {
         flex: 1, 
         justifyContent: 'space-between', 
-        alignItems: 'center'
+        alignItems: 'center',
     },
     username: {
         color: '#fff', 

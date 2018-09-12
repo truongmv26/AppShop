@@ -1,15 +1,30 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import CartView from './CartView';
+import { createStackNavigator } from 'react-navigation';
+import ProductDetail from '../detail/ProductDetail';
 
 export default class Cart extends Component {
     
     render() {
         return (
-            <View style={{flex: 1, justifyContent: 'center',alignItems: 'center'}}>
-                <Text style={{fontSize: 30}}>
-                    Cart Component
-                </Text>
-            </View>
+            <CartNavigator />
         );
     }
 }
+
+const CartNavigator = createStackNavigator({
+    CartView: {
+        screen: CartView,
+        navigationOptions: ({ navigation }) => ({
+            header: null
+        }),
+    },
+    Detail: {
+        screen: ProductDetail,
+        navigationOptions: ({ navigation }) => ({
+            header: null
+        }),
+    }
+}, {
+    initialRouteName: 'CartView'
+})
