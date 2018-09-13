@@ -50,10 +50,23 @@ const App = createStackNavigator({
         })
     },
     OrderHistory: {
-        screen: OrderHistory
+        screen: OrderHistory,
+        navigationOptions: ({ navigation }) => ({
+            headerTitle: 'Order History',
+            headerStyle: {
+                backgroundColor: '#41AE8B'
+            },
+            headerTitleStyle: {
+                fontSize: 24,
+                fontFamily: 'Avenir',
+                color: '#fff'
+            },
+            headerTintColor: '#fff',
+            headerBackTitle: ' '
+        })
     }
 }, {
-    initialRouteName: 'ChangeInfo'
+    initialRouteName: 'Main'
 })
 
 export default App;
