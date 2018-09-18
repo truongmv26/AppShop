@@ -6,15 +6,16 @@ import ProductDetail from '../detail/ProductDetail';
 export default class Cart extends Component {
     
     render() {
+        const CartNavigator = mainCartNavigator(this.props);
         return (
             <CartNavigator />
         );
     }
 }
 
-const CartNavigator = createStackNavigator({
+const mainCartNavigator = value => createStackNavigator({
     CartView: {
-        screen: CartView,
+        screen: props => <CartView {...props} {...value} />,
         navigationOptions: ({ navigation }) => ({
             header: null
         }),

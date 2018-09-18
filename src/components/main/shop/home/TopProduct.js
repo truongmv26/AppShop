@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { 
+    View, Text, StyleSheet, Image, 
+    Dimensions, TouchableOpacity,
+    FlatList
+} from 'react-native';
+
+const url = 'http://192.168.64.2/api/images/product/'
 
 import sp1 from '../../../../media/temp/sp1.jpeg';
-import sp2 from '../../../../media/temp/sp2.jpeg';
-import sp3 from '../../../../media/temp/sp3.jpeg';
-import sp4 from '../../../../media/temp/sp4.jpeg';
 
 export default class TopProduct extends Component {
 
@@ -14,11 +17,15 @@ export default class TopProduct extends Component {
             width: 0,
             height: 0
         }
+        // this.goToDetail = this.goToDetail.bind(this)
     }
 
-    goToDetail() {
+    goToDetail = product => {
         const { navigation } = this.props;
-        navigation.navigate('Detail')
+        data = {
+            product: product
+        }
+        navigation.navigate('Detail', data)
     }
 
     render() {
@@ -27,35 +34,25 @@ export default class TopProduct extends Component {
             title, body, productContainer, 
             productImage, productName, productPrice 
         } = styles;
+        const { topProducts } = this.props;
         return (
             <View style={container}>
                 <View style={titleContainer}>
                     <Text style={title}>TOP PRODUCTS</Text>
                 </View>
-                <View style={body}>
-                    <TouchableOpacity style={productContainer} onPress={this.goToDetail.bind(this)}>
-                        <Image source={sp1} style={productImage} />
-                        <Text style={productName}>Product Name</Text>
-                        <Text style={productPrice}>$400</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={productContainer} onPress={this.goToDetail.bind(this)}>
-                        <Image source={sp2} style={productImage} />
-                        <Text style={productName}>Product Name</Text>
-                        <Text style={productPrice}>$250</Text>
-                    </TouchableOpacity>
-                    <View style={{height: 10, width: width}} />
-                    <TouchableOpacity style={productContainer} onPress={this.goToDetail.bind(this)}>
-                        <Image source={sp3} style={productImage} />
-                        <Text style={productName}>Product Name</Text>
-                        <Text style={productPrice}>$400</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={productContainer} onPress={this.goToDetail.bind(this)}>
-                        <Image source={sp4} style={productImage} />
-                        <Text style={productName}>Product Name</Text>
-                        <Text style={productPrice}>$250</Text>
-                    </TouchableOpacity>
-                </View>
-                
+                <FlatList 
+                    contentContainerStyle={body} 
+                    data={topProducts} 
+                    renderItem={({item, index}) => {
+                        return (
+                            <TouchableOpacity style={productContainer} onPress={() => this.goToDetail(item)}>
+                                <Image source={{ uri: `${url}${item.images[0]}` }} style={productImage} />
+                                <Text style={productName}>{item.name.toUpperCase()}</Text>
+                                <Text style={productPrice}>{item.price}$</Text>
+                            </TouchableOpacity>
+                        );
+                    }}
+                />
             </View>            
         );
     }
@@ -98,7 +95,8 @@ const styles = StyleSheet.create({
         shadowOffset: { height: 3, width: 0 },
         shadowOpacity: 0.2,
         paddingBottom: 20,
-        backgroundColor: '#ECECEC'
+        backgroundColor: '#ECECEC',
+        marginBottom: 15
     },
     productImage: {
         width: productImageWidth,
@@ -107,14 +105,15 @@ const styles = StyleSheet.create({
     productName: {
         paddingLeft: 10,
         fontFamily: 'Avenir',
-        fontSize: 20,
+        fontSize: 16,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: 5
     },
     productPrice: {
         paddingLeft: 10,
         fontFamily: 'Avenir',
-        fontSize: 22,
+        fontSize: 20,
         color: '#AE85F8'
     }
 })

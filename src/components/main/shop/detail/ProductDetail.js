@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image, ScrollView } from 'react-native';
 
-import img1 from '../../../../media/temp/sp5.jpeg';
-import img2 from '../../../../media/temp/sp4.jpeg';
+const url = 'http://192.168.64.2/api/images/product/'
+import global from '../../../global';
 
 const back = require('../../../../media/appIcon/back.png');
 const cart = require('../../../../media/appIcon/cartfull.png');
@@ -14,6 +14,11 @@ export default class ProductDetail extends Component {
         navigation.goBack();
     }
 
+    addToCart = product => {
+        // const { product } = this.props.navigation.state.params;
+        global.addProductToCart(product);
+    }
+
     render() {
         const {
             wrapper, cardStyle, header,
@@ -22,6 +27,7 @@ export default class ProductDetail extends Component {
             textSmoke, textHighlight, textMain, titleContainer,
             descContainer, productImageStyle, descStyle, txtMaterial, txtColor
         } = styles;
+        const { params } = this.props.navigation.state
         return (
             <View style={wrapper}>
                 <View style={cardStyle}>
@@ -29,31 +35,31 @@ export default class ProductDetail extends Component {
                         <TouchableOpacity onPress={this.goBackNavigation.bind(this)}>
                             <Image style={backStyle} source={back} />
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.addToCart(params.product)}>
                             <Image style={cartStyle} source={cart} />
                         </TouchableOpacity>
                     </View>
                     <View style={imageContainer}>
                         <ScrollView style={{ flexDirection: 'row', padding: 10, height: swiperHeight }} horizontal >
-                            <Image source={img1} style={productImageStyle} />
-                            <Image source={img2} style={productImageStyle} />
+                            <Image source={{ uri: `${url}${params.product.images[0]}` }} style={productImageStyle} />
+                            <Image source={{ uri: `${url}${params.product.images[1]}` }} style={productImageStyle} />
                         </ScrollView>
                     </View>
                     <View style={footer}>
                         <View style={titleContainer}>
                             <Text style={textMain}>
-                                <Text style={textBlack}>{'back of the'.toUpperCase()}</Text>
+                                <Text style={textBlack}>{`${params.product.name.toUpperCase()}`}</Text>
                                 <Text style={textHighlight}> / </Text>
-                                <Text style={textSmoke}>100$</Text>
+                                <Text style={textSmoke}>{params.product.price}$</Text>
                             </Text>
                         </View>
                         <View style={descContainer}>
-                            <Text style={descStyle}>A delicate layer of eyelash lace brings dreamy elegance to this piece, while smooth, lightweight lining feels luxurious against your skin. We love it with heels for a look that fits in on date night, or with cool booties to add an edge.</Text>
+                            <Text style={descStyle}>{params.product.description}</Text>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 15 }}>
-                                <Text style={txtMaterial}>Material Fur</Text>
+                                <Text style={txtMaterial}>Material {params.product.material}</Text>
                                 <View style={{ flexDirection: 'row' }} >
-                                    <Text style={txtColor}>Color Black</Text>
-                                    <View style={{ height: 15, width: 15, backgroundColor: 'black'.toLowerCase(), borderRadius: 15, marginLeft: 10, borderWidth: 1, borderColor: '#C21C70' }} />
+                                    <Text style={txtColor}>Color {params.product.color}</Text>
+                                    <View style={{ height: 15, width: 15, backgroundColor: `${params.product.color.toLowerCase()}`, borderRadius: 15, marginLeft: 10, borderWidth: 1, borderColor: '#C21C70' }} />
                                 </View>
                             </View>
                         </View>

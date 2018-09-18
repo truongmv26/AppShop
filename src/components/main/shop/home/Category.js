@@ -3,6 +3,7 @@ import { View, Text, ImageBackground, StyleSheet, Dimensions, TouchableOpacity }
 import Swiper from 'react-native-swiper';
 
 const { width, height } = Dimensions.get('window');
+const url = 'http://192.168.64.2/api/images/type/'
 
 export default class Category extends Component {
 
@@ -12,6 +13,7 @@ export default class Category extends Component {
     }
 
     render() {
+        const { types } = this.props;
         return (
             <View style={styles.wrapper}>
                 <View style={{ flex: 1, paddingTop: 5 }}>
@@ -21,36 +23,27 @@ export default class Category extends Component {
                 </View>
                 <View style={{ flex: 4, justifyContent: 'flex-end' }}>
                     <Swiper autoplayTimeout={2} autoplay={true}>
-                        <TouchableOpacity onPress={this.goProductList.bind(this)}>
+                        {types.map(data => {
+                            return (
+                                <TouchableOpacity onPress={this.goProductList.bind(this)}>
                             <ImageBackground
-                                source={require('../../../../media/temp/little.jpg')}
+                                source={{uri: `${url}${data.image}`}}
                                 style={styles.imageStyle}
                             >
-                                <Text style={styles.textStyle}>Little Dress</Text>
+                                <Text style={styles.textStyle}>{ data.name }</Text>
                             </ImageBackground>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={this.goProductList.bind(this)}>
-                            <ImageBackground
-                                source={require('../../../../media/temp/maxi.jpg')}
-                                style={styles.imageStyle}
-                            >
-                                <Text style={styles.textStyle}>Maxi Dress</Text>
-                            </ImageBackground>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={this.goProductList.bind(this)}>
-                            <ImageBackground
-                                source={require('../../../../media/temp/party.jpg')}
-                                style={styles.imageStyle}
-                            >
-                                <Text style={styles.textStyle}>Party Dress</Text>
-                            </ImageBackground>
-                        </TouchableOpacity>
+                            );
+                        })}
+                        
+                        
                     </Swiper>
                 </View>
 
             </View>
         );
     }
+
 }
 
 const styles = StyleSheet.create({

@@ -5,24 +5,25 @@ import ProductDetail from '../detail/ProductDetail';
 import ListProduct from '../list/ListProduct';
 
 export default class Home extends Component {
-    
+
     render() {
         console.disableYellowBox = true;
+        const HomeNavigator = mainHomeNavigator(this.props);
         return (
             <HomeNavigator />
         );
     }
 }
 
-const HomeNavigator = createStackNavigator({
+const mainHomeNavigator = value => createStackNavigator({
     HomeView: {
-        screen: HomeView,
+        screen: props => <HomeView {...props} {...value} />,
         navigationOptions: ({ navigation }) => ({
             header: null
         }),
     },
     Detail: {
-        screen: ProductDetail,
+        screen: props => <ProductDetail {...props} {...value} />,
         navigationOptions: ({ navigation }) => ({
             header: null
         }),
@@ -34,5 +35,5 @@ const HomeNavigator = createStackNavigator({
         }),
     }
 }, {
-    initialRouteName: 'HomeView'
-})
+        initialRouteName: 'HomeView'
+    })
