@@ -52,7 +52,7 @@ class CartItem extends Component {
                         </TouchableOpacity>
                     </View>
                     <View>
-                        <Text style={txtPrice}>{item.product.price}$</Text>
+                        <Text style={txtPrice}>{item.product.price * item.quantity}$</Text>
                     </View>
                     <View style={productController}>
                         <View style={numberOfProduct}>
@@ -84,6 +84,8 @@ export default class CartView extends Component {
     render() {
         const { cartArray, navigation } = this.props;
         const { main, checkoutButton, checkoutTitle, wrapper } = styles;
+        const arrTotal = cartArray.map(e => e.product.price * e.quantity);
+        const total = arrTotal.length ? arrTotal.reduce((a,b) => a + b) : 0;
         return (
             <View style={wrapper}>
                 <FlatList
@@ -96,7 +98,7 @@ export default class CartView extends Component {
                     }}
                 />
                 <TouchableOpacity style={checkoutButton}>
-                    <Text style={checkoutTitle}>TOTAL {1000}$ CHECKOUT NOW</Text>
+                    <Text style={checkoutTitle}>TOTAL {total}$ CHECKOUT NOW</Text>
                 </TouchableOpacity>
             </View>
         );
