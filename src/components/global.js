@@ -3,4 +3,5 @@ module.exports = {
     increaseQuantity: null,
     decreaseQuantity: null,
     removeProduct: null,
+    onSignIn: null,
 }

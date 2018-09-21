@@ -14,6 +14,11 @@ export default class Authentication extends Component {
         }
     }
 
+    goBackToMain() {
+        const { navigation } = this.props;
+        navigation.goBack()
+    }
+
     _onSignIn = () => {
         this.setState({ isSignIn: true })
     }
@@ -31,7 +36,7 @@ export default class Authentication extends Component {
         const styleBtnSignIn = this.state.isSignIn ? styles.activeStyle : styles.inactiveStyle
         const styleBtnSignUp = this.state.isSignIn ? styles.inactiveStyle : styles.activeStyle
 
-        const btnJSX = this.state.isSignIn ? <SignIn /> : <SignUp />
+        const btnJSX = this.state.isSignIn ? <SignIn goBackToMain={this.goBackToMain.bind(this)} /> : <SignUp goToSignIn={this._onSignIn.bind(this)} />
         return (
             <View style={container}>
                 <View />
@@ -95,5 +100,5 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'Avenir'
     },
-    
+
 })

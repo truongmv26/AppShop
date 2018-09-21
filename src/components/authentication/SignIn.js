@@ -7,15 +7,57 @@ import {
     TextInput
 } from "react-native";
 
+import login from '../../api/login';
+import saveToken from '../../api/saveToken';
+import getToken from '../../api/getToken';
+import global from '../global';
+
 class SignIn extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            password: ''
+        }
+    }
+
+    componentDidMount() {
+        getToken().then(a => alert('Token: ' + a))
+    }
+
+    onLogin = () => {
+        const { email, password } = this.state;
+        login(email, password).then(res => {
+            global.onSignIn(res);
+            this.props.goBackToMain();
+            saveToken(res.token);
+            alert('hhahahhahah');
+        }).catch(() => {
+            alert('Sai thong tin dang nhap');
+            return;
+        })
+    }
 
     render() {
         const { inputStyle, bigButton, textBigButton } = styles;
+        const { email, password } = this.state;
         return (
             <View>
-                <TextInput style={inputStyle} placeholder="Enter your email" />
-                <TextInput style={inputStyle} placeholder="Enter your password" />
-                <TouchableOpacity style={bigButton}>
+                <TextInput 
+                    style={inputStyle} 
+                    placeholder="Enter your email" 
+                    value={email}
+                    onchangeText={text => this.setState({email: text})}
+                />
+                <TextInput 
+                    style={inputStyle} 
+                    placeholder="Enter your password" 
+                    value={password}
+                    secureTextEntry={true}    
+                    onchangeText={text => this.setState({password: text})}
+                />
+                <TouchableOpacity style={bigButton} onPress={this.onLogin.bind(this)}>
                     <Text style={textBigButton}>
                         SIGN IN NOW
                     </Text>

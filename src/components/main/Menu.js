@@ -4,14 +4,21 @@ import {
     Dimensions, StyleSheet,
     TouchableOpacity
 } from 'react-native';
+import global from '../global';
+
 const { width } = Dimensions.get('window');
 export default class Menu extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            isLoggedIn: false
+            user: null
         }
+        global.onSignIn = this.onSignIn.bind(this);
+    }
+
+    onSignIn(user) {
+        this.setState({user: user})
     }
 
     goAuthentication() {
@@ -46,7 +53,7 @@ export default class Menu extends Component {
 
         const loginJSX = (
             <View style={loginContainer}>
-                <Text style={username}>Mai Van Truong</Text>
+                <Text style={username}>{this.state.user ? this.state.user.name : ''}</Text>
                 <View>
                     <TouchableOpacity style={btnStyle} onPress={this.goChangeInfo.bind(this)}>
                         <Text style={btnText}>Change Info</Text>
@@ -62,7 +69,7 @@ export default class Menu extends Component {
             </View>
         );
 
-        const mainJSX = this.state.isLoggedIn ? loginJSX : logoutJSX;
+        const mainJSX = this.state.user ? loginJSX : logoutJSX;
 
         return (
             <View style={container}>
