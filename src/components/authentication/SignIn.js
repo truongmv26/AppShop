@@ -22,10 +22,6 @@ class SignIn extends Component {
         }
     }
 
-    componentDidMount() {
-        getToken().then(a => alert('Token: ' + a))
-    }
-
     onLogin = () => {
         const { email, password } = this.state;
         login(email, password).then(res => {

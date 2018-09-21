@@ -5,6 +5,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import global from '../global';
+import saveToken from '../../api/saveToken';
 
 const { width } = Dimensions.get('window');
 export default class Menu extends Component {
@@ -18,7 +19,12 @@ export default class Menu extends Component {
     }
 
     onSignIn(user) {
-        this.setState({user: user})
+        this.setState({ user: user })
+    }
+
+    onSignOut() {
+        this.setState({ user: null })
+        saveToken('');
     }
 
     goAuthentication() {
@@ -37,10 +43,10 @@ export default class Menu extends Component {
     }
 
     render() {
-        const { 
-            container, profile, btnStyle, 
-            btnText, btnSignInStyle, 
-            loginContainer, username 
+        const {
+            container, profile, btnStyle,
+            btnText, btnSignInStyle,
+            loginContainer, username
         } = styles;
 
         const logoutJSX = (
@@ -61,7 +67,7 @@ export default class Menu extends Component {
                     <TouchableOpacity style={btnStyle} onPress={this.goOrderHistory.bind(this)}>
                         <Text style={btnText}>Order History</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={btnStyle}>
+                    <TouchableOpacity style={btnStyle} onPress={this.onSignOut.bind(this)}>
                         <Text style={btnText}>Sign Out</Text>
                     </TouchableOpacity>
                 </View>
@@ -74,7 +80,7 @@ export default class Menu extends Component {
         return (
             <View style={container}>
                 <Image source={require('../../media/temp/profile.png')} style={profile} />
-                { mainJSX }
+                {mainJSX}
             </View>
         );
     }
@@ -118,13 +124,13 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     loginContainer: {
-        flex: 1, 
-        justifyContent: 'space-between', 
+        flex: 1,
+        justifyContent: 'space-between',
         alignItems: 'center',
     },
     username: {
-        color: '#fff', 
-        fontFamily: 'Avenir', 
+        color: '#fff',
+        fontFamily: 'Avenir',
         fontSize: 18
     }
 })
