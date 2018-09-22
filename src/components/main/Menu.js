@@ -39,7 +39,7 @@ export default class Menu extends Component {
 
     goChangeInfo() {
         const { navigation } = this.props;
-        navigation.navigate('ChangeInfo')
+        navigation.navigate('ChangeInfo', {user: this.state.user})
     }
 
     render() {

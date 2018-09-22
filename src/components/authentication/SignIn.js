@@ -25,10 +25,9 @@ class SignIn extends Component {
     onLogin = () => {
         const { email, password } = this.state;
         login(email, password).then(res => {
-            global.onSignIn(res);
+            global.onSignIn(res.user);
             this.props.goBackToMain();
             saveToken(res.token);
-            alert('hhahahhahah');
         }).catch(() => {
             alert('Sai thong tin dang nhap');
             return;
@@ -44,14 +43,14 @@ class SignIn extends Component {
                     style={inputStyle} 
                     placeholder="Enter your email" 
                     value={email}
-                    onchangeText={text => this.setState({email: text})}
+                    onChangeText={text => this.setState({email: text})}
                 />
                 <TextInput 
                     style={inputStyle} 
                     placeholder="Enter your password" 
                     value={password}
                     secureTextEntry={true}    
-                    onchangeText={text => this.setState({password: text})}
+                    onChangeText={text => this.setState({password: text})}
                 />
                 <TouchableOpacity style={bigButton} onPress={this.onLogin.bind(this)}>
                     <Text style={textBigButton}>
